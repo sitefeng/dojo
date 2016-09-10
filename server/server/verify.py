@@ -60,6 +60,7 @@ def verify_with_clarify(filename):
     else:
         return False
 
+
 @app.route('/verify', methods=['POST'])
 def response():
     filename = request.files['image'].filename
@@ -68,3 +69,15 @@ def response():
     verification = verify_with_clarify(filename)
 
     return json.dumps({ 'associations': [], 'result': verification }), 200
+
+
+@app.errorhandler(400)
+def unhandled_exception(e):
+    app.logger.error('Unhandled Exception: %s', (e))
+    return json.dumps({'error': e}), 400
+
+
+@app.errorhandler(Exception)
+def unhandled_exception(e):
+    app.logger.error('Unhandled Exception: %s', (e))
+    return json.dumps({'error': e}), 500
