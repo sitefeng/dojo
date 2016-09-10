@@ -12,8 +12,35 @@ def allowed_file(filename):
     return '.' in filename and \
             filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+def verify_with_clarify(filename):
+    clarifai_api = ClarifaiApi()  # assumes environment variables are set.
+    result = clarifai_api.tag_images(open('uploads/' + filename, 'rb'))
 
-def validate_request(request, filename):
+    api_results = {}
+    tag_results = result[u'results'][0][u'result'][u'tag'][u'classes']
+    probability_results = result[u'results'][0][u'result'][u'tag'][u'probs']
+    for index in enumerate(probability_results):
+        probability = round(probability_results[index[0]] * 100)
+        tag = str(tag_results[index[0]])
+
+        api_results[tag] = probability
+
+    results = {}
+    for probability in (sorted(api_results, reverse = True)):
+        results[api_results[probability]] = probability
+
+    print api_results
+    # not good enough, this should be the highest
+    if request.form['name'] in api_results:
+        return True
+    else:
+        return False
+
+
+@app.route('/verify', methods=['POST'])
+def response():
+    filename = request.files['image'].filename
+
     error_reason = ''
 
     if 'image' not in request.files:
@@ -37,35 +64,6 @@ def validate_request(request, filename):
 
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-
-def verify_with_clarify(filename):
-    clarifai_api = ClarifaiApi()  # assumes environment variables are set.
-    result = clarifai_api.tag_images(open('uploads/' + filename, 'rb'))
-
-    api_results = {}
-    tag_results = result[u'results'][0][u'result'][u'tag'][u'classes']
-    probability_results = result[u'results'][0][u'result'][u'tag'][u'probs']
-    for index in enumerate(probability_results):
-        probability = round(probability_results[index[0]] * 100)
-        tag = str(tag_results[index[0]])
-
-        api_results[tag] = probability
-
-    # results = {}
-    # for probability in (sorted(clarifai_results, reverse = True)):
-    #     results[clarifai_results[probability]] = probability
-
-    if request.form['name'] in api_results:
-        return True
-    else:
-        return False
-
-
-@app.route('/verify', methods=['POST'])
-def response():
-    filename = request.files['image'].filename
-
-    validate_request(request, filename)
     verification = verify_with_clarify(filename)
 
     return json.dumps({ 'associations': [], 'result': verification }), 200
