@@ -1,36 +1,44 @@
 from server import app
+import json
+import os
 from flask import request
 
 ALLOWED_EXTENSIONS = set(['jpg', 'png'])
 
 def allowed_file(filename):
     return '.' in filename and \
-            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/verify', methods=['POST'])
 def response():
-    error_reason = ''
-    error_message = {'error': error_reason }
-    if 'file' not in request.files:
-        error_reason = 'no file'
-        return error_message, 400
+    print request.files['image'].filename
+    print request.form['name']
+    # see all the keys
+    #print request.__dict__
 
-    file = request.files['file']
+    error_reason = ''
+
+    if 'image' not in request.files:
+        error_reason = 'no image'
+        error_message = {'error': error_reason}
+        return json.dumps(error_message), 400
+
+    file = request.files['image']
 
     if not file or not allowed_file(file.filename):
         error_reason = 'not allowed filename'
-        return error_message, 400
 
-    if 'name' not in request.files:
+    if 'name' not in request.form:
         error_reason = 'no name'
-        return error_message, 400
 
-    if 'language' not in request.files:
+    if 'language' not in request.form:
         error_reason = 'no language'
-        return error_message, 400
 
-    print "LANGUAGE", request.files['language']
-    print "NAME", request.files['name']
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    if error_reason:
+        print error_reason
+        error_message = {'error': error_reason}
+        return json.dumps(error_message), 400
 
-    return { 'associations': [], result: True }
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+
+    return json.dumps({ 'associations': [], 'result': True }), 200
