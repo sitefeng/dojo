@@ -48,6 +48,8 @@ def response():
         error_message = {'error': error_reason}
         return json.dumps(error_message), 400
 
+    file = request.files['image']
+
     if not file or not allowed_file(filename):
         error_reason = 'not allowed filename'
 
