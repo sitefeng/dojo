@@ -7,6 +7,7 @@ from clarifai.client import ClarifaiApi
 
 ALLOWED_EXTENSIONS = set(['jpg', 'png'])
 
+KNOWN_WORDS = ['leather', 'technology', 'drink']
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -23,19 +24,17 @@ def verify_with_clarify(filename):
         probability = round(probability_results[index[0]] * 100)
         tag = str(tag_results[index[0]])
 
-        api_results[tag] = probability
+        api_results[probability] = tag
 
-    results = {}
-    for probability in (sorted(api_results, reverse = True)):
-        results[api_results[probability]] = probability
+    for probability in (sorted(api_results, reverse=True)):
+        print api_results[probability], probability
+        if api_results[probability] in KNOWN_WORDS:
+            if request.form['name'] != api_results[probability]:
+                return False
+            else:
+                return True
 
-    print api_results
-    # not good enough, this should be the highest
-    if request.form['name'] in api_results:
-        return True
-    else:
-        return False
-
+    return False
 
 @app.route('/verify', methods=['POST'])
 def response():
@@ -72,7 +71,7 @@ def response():
 
 
 @app.errorhandler(400)
-def unhandled_exception(e):
+def badrequest_exception(e):
     app.logger.error('Unhandled Exception: %s', (e))
     return json.dumps({'error': e}), 400
 
