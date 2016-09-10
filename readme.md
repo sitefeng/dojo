@@ -3,4 +3,6 @@ some project name
 
 setup
 
-run `source bin/activate` inside server/venv
+cd server/venv
+run `source bin/activate`
+run `python server.py`
