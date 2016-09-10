@@ -42,3 +42,13 @@ def response():
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
 
     return json.dumps({ 'associations': [], 'result': True }), 200
+
+@app.errorhandler(400)
+def unhandled_exception(e):
+    app.logger.error('Unhandled Exception: %s', (e))
+    return json.dumps({'error': e}), 400
+
+@app.errorhandler(Exception)
+def unhandled_exception(e):
+    app.logger.error('Unhandled Exception: %s', (e))
+    return json.dumps({'error': e}), 500
