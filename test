@@ -1,0 +1,5 @@
+curl \
+  -F "name=kevin" \
+  -F "language=portuguese" \
+  -F "image=@/Users/Kevin/Downloads/IMG_0716.JPG" \
+  localhost:5000/verify

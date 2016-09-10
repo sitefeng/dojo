@@ -4,6 +4,8 @@ from flask import Flask
 from clarifai.client import ClarifaiApi
 app = Flask(__name__)
 
+import server.verify
+
 
 # index
 @app.route("/")
@@ -20,13 +22,13 @@ def index():
 	for index in enumerate(tag_results):
 		probability = round(probability_results[index[0]] * 100)
 		tag = str(tag_results[index[0]])
-		
+
 		clarifai_results[probability] = tag
 
 	results = []
 	for probability in (sorted(clarifai_results, reverse = True)):
 		results.append((clarifai_results[probability], probability))
-	
+
 	print results
 
 	return "o hai."
