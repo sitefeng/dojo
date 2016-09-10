@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A313a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ScavengerCollectionViewCell" customModule="Signal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="239" height="63"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="239" height="63"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_circle" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-Tg-gO2">
+                        <rect key="frame" x="20" y="9.5" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="NXg-Rx-Cub"/>
+                            <constraint firstAttribute="width" constant="44" id="P8b-3V-eiU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green Bottle" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuX-x6-4Ru">
+                        <rect key="frame" x="72" y="20.5" width="152" height="23"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="qbk-Tg-gO2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="K7h-AJ-GTe"/>
+                <constraint firstItem="qbk-Tg-gO2" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="LQ2-9Q-5IU"/>
+                <constraint firstItem="AuX-x6-4Ru" firstAttribute="leading" secondItem="qbk-Tg-gO2" secondAttribute="trailing" constant="8" id="XD4-Td-y88"/>
+                <constraint firstAttribute="trailing" secondItem="AuX-x6-4Ru" secondAttribute="trailing" constant="15" id="inm-f6-cD0"/>
+                <constraint firstItem="AuX-x6-4Ru" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="jNj-Ii-Toi"/>
+            </constraints>
+            <size key="customSize" width="239" height="63"/>
+            <connections>
+                <outlet property="imageView" destination="qbk-Tg-gO2" id="CRD-ps-JNh"/>
+                <outlet property="nameLabel" destination="AuX-x6-4Ru" id="BDP-SO-cNK"/>
+            </connections>
+            <point key="canvasLocation" x="272.5" y="242.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="unchecked_circle" width="84" height="84"/>
+    </resources>
+</document>
