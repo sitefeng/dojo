@@ -24,15 +24,10 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>performSelector-swift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>187351E0E97224099B95399B0FA5FD0E</key>
+		<key>2AB7CA33FE2D7025D225229D6FC15AFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,12 +37,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>30843E27C7BEBD26CDC524A3332B55A2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9D220AF2217AFDB940F336575C43249B</key>
+		<key>B32C995A2D8235B560C5C9C8073475E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

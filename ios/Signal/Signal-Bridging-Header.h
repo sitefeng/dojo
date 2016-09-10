@@ -4,8 +4,6 @@
 
 
 
-@import performSelector_swift;
-
 #import "PhotoSearchViewController.h"
 
 #import "UIColor+Helper.h"
