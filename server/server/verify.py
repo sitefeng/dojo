@@ -30,12 +30,6 @@ def verify_image(filename):
 
     return False
 
-def get_translation(source_text, dest_lang):
-    link = "https://www.googleapis.com/language/translate/v2?q=" + source_text + "&target=" + dest_lang + "&key=AIzaSyAEq1snggjJn11nZ3-BZzdToUcKdYG5y60"
-    response_body = requests.get(link).content
-    translated_word = json.loads(response_body)[u'data'][u'translations'][0][u'translatedText']
-    return translated_word
-
 
 @app.route('/words', methods=['GET'])
 def words_response():
@@ -44,7 +38,7 @@ def words_response():
 
     translated_words = []
     for word in words:
-        translated_word = get_translation(word, lang)
+        translated_word = lib.get_translation(word, lang)
         translated_words.append(word)
     return json.dumps({'words': translated_words,
                            'language': lang}), 200
@@ -81,39 +75,17 @@ def verify_response():
     file.save(dest)
 
     if verify_image(filename):
-        associations = get_translated_associations(request)
+        associations = lib.association_with_translation(request.form['language'],
+                                                        CONSTANTS.ASSOCIATIONS[request.form['name']])
         db.entries.insert_one(
             {
                 'name': request.form['name'],
                 'dest': dest,
-                'associations': associations
+                'associations': associations,
+                'lang': request.form['language']
             }
         )
         return json.dumps({'associations': associations,
                            'result': True}), 200
 
     return json.dumps({ 'associations': [], 'result': False }), 200
-
-
-def get_translated_associations(request):
-    translations = []
-    associations = CONSTANTS.ASSOCIATIONS[request.form['name']]
-    for association in associations:
-        for pair in association:
-            translated_word = get_translation(pair, request.form['language'])
-            pairing = {}
-            pairing[translated_word] = association[pair]
-            translations.append(pairing)
-    return translations
-
-
-@app.errorhandler(400)
-def badrequest_exception(e):
-    app.logger.error('Unhandled Exception: %s', (e))
-    return json.dumps({'error': e}), 400
-
-
-@app.errorhandler(Exception)
-def unhandled_exception(e):
-    app.logger.error('Unhandled Exception: %s', (e))
-    return json.dumps({'error': e}), 500

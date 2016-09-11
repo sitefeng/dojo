@@ -52,5 +52,7 @@ def lookup():
 
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-    object_guesses = get_guesses(filename)
-    return json.dumps({'association': object_guesses}), 200
+    associations = lib.association_with_translation(request.form['language'],
+                                                    get_guesses(filename))
+
+    return json.dumps({'association': associations}), 200
