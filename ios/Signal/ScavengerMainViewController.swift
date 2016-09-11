@@ -20,9 +20,26 @@ class ScavengerMainViewController: UIViewController {
     
     var levelViewControllers: [ScavengerHuntViewController] = []
     
+    var selectedLanguageCode = "fr"
+    
     // 2D Array
-    var wordsForLevelControllers = [["Trump", "Lanyard", "Vent", "Chair"], ["Vent", "Chair", "Flower", "Ship"], ["Trump", "Lanyard", "Vent", "Chair", "Flower", "Ship"]]
-    var wordsCompletedForLevelControllers = [[false, false, false, false], [false, false, false, false], [false, false, false, false, false, false]]
+    var wordsForLevelControllers = [["Crème Glacée", "Lanyard", "Vent", "Chair"], ["Vent", "Chair", "Flower", "Ship"], ["Trump", "Lanyard", "Flower", "Ship"]]
+    var wordsCompletedForLevelControllers = [[false, false, false, false], [false, false, false, false], [false, false, false, false]]
+    
+    convenience init(languageCode: String) {
+        self.init(nibName: "ScavengerMainViewController", bundle: nil)
+        
+        selectedLanguageCode = languageCode
+    }
+    
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

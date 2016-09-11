@@ -40,6 +40,8 @@ class ActionGlowButton: UIButton {
         self.layer.shadowColor = UIColor.defaultGreenColor().CGColor
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = 15
+        
+        self.titleLabel?.font = UIFont(name: "Lato-Bold", size: 16)
     }
 
     
