@@ -12,6 +12,8 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
 
     private let kCellReuseIdentifier = "kCellReuseIdentifier"
     
+    var lookupMode: Bool = false
+    
     private var scavengerImage: UIImage?
     private var correctness: Bool = false
     private var associationItems: [AssociationItem]!
@@ -27,8 +29,12 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
     @IBOutlet weak var relatedTableView: UITableView!
     @IBOutlet weak var backButton: ActionGlowButton!
     
+    /// itemName is in foreign language
+    /// for scavenger mode only
     convenience init(capturedImage: UIImage, guessCorrectness: Bool, associations: [AssociationItem], itemName: String) {
         self.init(nibName: "ScavengerCompletionViewController", bundle: nil)
+        
+        lookupMode = false
         
         scavengerImage = capturedImage
         correctness = guessCorrectness
@@ -36,8 +42,21 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
         scavengerName = itemName
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    /// for lookupMode only
+    convenience init(capturedImage: UIImage, associations: [AssociationItem], itemName: String) {
+        self.init(nibName: "ScavengerCompletionViewController", bundle: nil)
         
+        lookupMode = true
+        
+        // set correctness to always true for free lookup mode
+        correctness = true
+        
+        scavengerImage = capturedImage
+        associationItems = associations
+        scavengerName = itemName
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -65,10 +84,14 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
         imageView.layer.borderColor = UIColor.whiteColor().CGColor
         imageView.layer.borderWidth = 6
         
-        if correctness {
-            correctnessImageView.image = UIImage(named: "correct")
+        if lookupMode == false {
+            if correctness {
+                correctnessImageView.image = UIImage(named: "correct")
+            } else {
+                correctnessImageView.image = UIImage(named: "wrong")
+            }
         } else {
-            correctnessImageView.image = UIImage(named: "wrong")
+            correctnessImageView.image = nil
         }
         
         whiteView.layer.cornerRadius = 10

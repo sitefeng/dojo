@@ -101,6 +101,7 @@ class ScavengerMainViewController: UIViewController {
             levelHuntViewController.view.frame = CGRect(x: screenWidth * CGFloat(index), y: 0, width: screenWidth, height: levelHeight)
             levelHuntViewController.view.layer.shadowColor = UIColor.blackColor().CGColor
             levelHuntViewController.view.layer.shadowOpacity = 0.5
+            levelHuntViewController.view.layer.shadowRadius = 8
             
             levelViewControllers.append(levelHuntViewController)
             self.addChildViewController(levelHuntViewController)
@@ -119,5 +120,9 @@ class ScavengerMainViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func cameraButtonTapped(sender: AnyObject) {
+        let captureViewController = ScavengerCaptureViewController()
+        self.presentViewController(captureViewController, animated: true, completion: nil)
+    }
 
 }

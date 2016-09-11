@@ -15,7 +15,7 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScavengerCaptureViewController" customModule="Signal" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScavengerCaptureViewController" customModule="Dojo" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="2uB-cQ-2tB" id="bwE-1b-QdZ"/>
                 <outlet property="cameraView" destination="wSC-W7-SWe" id="gTm-G5-LlI"/>
@@ -34,7 +34,7 @@
                     <rect key="frame" x="10" y="94" width="580" height="456"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7b-Jh-QPe" customClass="ActionGlowButton" customModule="Signal" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7b-Jh-QPe" customClass="ActionGlowButton" customModule="Dojo" customModuleProvider="target">
                     <rect key="frame" x="239" y="530" width="122" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="122" id="H0e-qZ-gFk"/>

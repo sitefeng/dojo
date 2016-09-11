@@ -70,6 +70,56 @@ final internal class NetworkRequests: NSObject {
     }
     
     
+    
+    /// - Param: completionBlock (RequestSuccessful, scavengerResult, related words/ associations)
+    func lookup(photoData: NSData, completionBlock: (Bool, [AssociationItem]) -> Void) {
+        
+        let userLanguageData = SignalAppGlobals.sharedInstance.userLanguage().dataUsingEncoding(NSUTF8StringEncoding)!
+        let url = NSURL(string: NetworkRequests.BaseURL + NetworkRequests.LookupPath)
+        let urlRequest = NSMutableURLRequest(URL: url!)
+        urlRequest.HTTPMethod = "POST"
+        
+        Alamofire.upload(urlRequest, multipartFormData: { (multiformData) in
+            multiformData.appendBodyPart(data: userLanguageData, name: "language")
+            multiformData.appendBodyPart(data: photoData, name: "image", fileName: "iphoneUpload.jpg", mimeType: "jpg")
+            
+        }) { (dataEncodingResult) in
+            
+            switch dataEncodingResult {
+            case .Success(let uploadRequest, _, _):
+                
+                uploadRequest.responseJSON(completionHandler: { (response) in
+                    
+                    var dataDict: [NSString: AnyObject] = ["associations":[]]
+                    do {
+                        dataDict = try NSJSONSerialization.JSONObjectWithData(response.data!, options: [.AllowFragments]) as! [String : AnyObject]
+                    } catch {
+                        completionBlock(false, [])
+                        return
+                    }
+                    
+                    print(dataDict)
+                    
+                    // array of associations
+                    let associationDicts: [AnyObject] = dataDict["associations"] as! [AnyObject]
+                    
+                    let associations = associationDicts.map({ (dict) -> AssociationItem in
+                        return AssociationItem(rawDictionary: dict as! [String: AnyObject])
+                    })
+                    
+                    completionBlock(true, associations)
+                })
+                
+            case .Failure(let encodingError):
+                print(encodingError)
+                completionBlock(false, [])
+            }
+        }
+        
+    }
+    
+    
+    
     //eg: http://localhost:5000/words?language=es&list=apple,orange,pear,banana
     func translate(englishWords: [String], index: NSInteger = 0, destinationLanguage: String = "default", completionBlock: (Bool, NSInteger, [String]) -> Void) {
         

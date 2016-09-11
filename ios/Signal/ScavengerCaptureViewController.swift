@@ -11,6 +11,8 @@ import AVFoundation
 
 final internal class ScavengerCaptureViewController: UIViewController {
     
+    var lookupMode: Bool = false
+    
     // in foreign language
     var huntWord: String = ""
     // in english
@@ -30,8 +32,14 @@ final internal class ScavengerCaptureViewController: UIViewController {
     
     convenience init(scavengerWord: String, wordInEnglish: String) {
         self.init(nibName: "ScavengerCaptureViewController", bundle: nil)
+        lookupMode = false
         huntWord = scavengerWord
         englishWord = wordInEnglish
+    }
+    
+    convenience init() {
+        self.init(nibName: "ScavengerCaptureViewController", bundle: nil)
+        lookupMode = true
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -45,8 +53,13 @@ final internal class ScavengerCaptureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guidancePretextLabel.text = "Looking for"
-        mainLabel.text = huntWord
+        if lookupMode == false {
+            guidancePretextLabel.text = "Looking for"
+            mainLabel.text = huntWord
+        } else {
+            guidancePretextLabel.text = ""
+            mainLabel.text = "Lookup"
+        }
         
         captureButton.setupButtonWithTitle("Capture")
         
@@ -114,30 +127,61 @@ final internal class ScavengerCaptureViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    
+    ///data is photoImage NSData
     private func verifyWithServer(data: NSData) {
         
         let request = NetworkRequests()
         
-        request.verify(data, itemName: englishWord) { (success, resultCorrect, associations) in
-            
-            guard success else {
-                print("Error: verify not successful")
-                return
-            }
-            
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                let imageOrNil = UIImage(data: data)
+        if lookupMode == false {
+            request.verify(data, itemName: englishWord) { (success, resultCorrect, associations) in
                 
-                guard let image = imageOrNil else {
-                    print("no captured image")
+                guard success else {
+                    print("Error: verify not successful")
                     return
                 }
                 
-                let completionViewController = ScavengerCompletionViewController(capturedImage: image, guessCorrectness: resultCorrect, associations: associations, itemName: self.huntWord)
-                self.presentViewController(completionViewController, animated: true, completion: nil)
-            })
+                NSOperationQueue.mainQueue().addOperationWithBlock({
+                    let imageOrNil = UIImage(data: data)
+                    
+                    guard let image = imageOrNil else {
+                        print("no captured image")
+                        return
+                    }
+                    
+                    let completionViewController = ScavengerCompletionViewController(capturedImage: image, guessCorrectness: resultCorrect, associations: associations, itemName: self.huntWord)
+                    self.presentViewController(completionViewController, animated: true, completion: nil)
+                })
+            }
             
+        } else { // look up mode
+            
+            request.lookup(data, completionBlock: { (success, associations) in
+                guard success else {
+                    print("error")
+                    return
+                }
+                
+                NSOperationQueue.mainQueue().addOperationWithBlock({
+                    let imageOrNil = UIImage(data: data)
+                    
+                    guard let image = imageOrNil else {
+                        print("no captured image")
+                        return
+                    }
+                    
+                    let firstAssociation = associations.first as AssociationItem!
+                    
+                    let itemName = firstAssociation.translation
+                    let restOfAssociations = Array(associations[1..<associations.count])
+                    
+                    let completionVC = ScavengerCompletionViewController(capturedImage: image, associations: restOfAssociations, itemName: itemName)
+                    self.presentViewController(completionVC, animated: true, completion: nil)
+                })
+                
+            })
         }
+        
     }
     
     // MARK - NSNotification

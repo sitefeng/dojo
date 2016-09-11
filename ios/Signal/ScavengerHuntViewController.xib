@@ -13,7 +13,7 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScavengerHuntViewController" customModule="Signal" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScavengerHuntViewController" customModule="Dojo" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="N4e-z6-tPB" id="GvM-Kw-QUJ"/>
                 <outlet property="continueButton" destination="9U6-2z-nCj" id="sz1-WT-cYr"/>
@@ -71,7 +71,7 @@
                         <constraint firstItem="N4e-z6-tPB" firstAttribute="top" secondItem="0Hh-n9-7rN" secondAttribute="top" constant="57" id="pWD-dd-pqr"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9U6-2z-nCj" customClass="ActionGlowButton" customModule="Signal" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9U6-2z-nCj" customClass="ActionGlowButton" customModule="Dojo" customModuleProvider="target">
                     <rect key="frame" x="215" y="528" width="170" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="44q-OI-fcI"/>

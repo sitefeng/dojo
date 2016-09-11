@@ -13,7 +13,7 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScavengerMainViewController" customModule="Signal" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScavengerMainViewController" customModule="Dojo" customModuleProvider="target">
             <connections>
                 <outlet property="controllerScrollView" destination="hfU-aJ-pcq" id="oL4-N5-rpw"/>
                 <outlet property="headerImageView" destination="2G4-BG-xTV" id="b13-zD-BaI"/>
@@ -62,6 +62,14 @@
                                 <action selector="returnButtonPressed:" destination="-1" eventType="touchUpInside" id="vSn-17-kkC"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YBJ-gg-Tzn">
+                            <rect key="frame" x="234" y="68" width="35" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="camera"/>
+                            <connections>
+                                <action selector="cameraButtonTapped:" destination="-1" eventType="touchUpInside" id="MJI-Bh-meh"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -71,6 +79,7 @@
         </view>
     </objects>
     <resources>
+        <image name="camera" width="96" height="96"/>
         <image name="return" width="96" height="96"/>
         <image name="waterlooBackgorund" width="2133" height="1280"/>
     </resources>

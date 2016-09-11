@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AAC9FC671D832B640043E020"
-               BuildableName = "Signal.app"
-               BlueprintName = "Signal"
-               ReferencedContainer = "container:Signal.xcodeproj">
+               BuildableName = "Dojo.app"
+               BlueprintName = "Dojo"
+               ReferencedContainer = "container:Dojo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AAC9FC7E1D832B640043E020"
-               BuildableName = "SignalTests.xctest"
-               BlueprintName = "SignalTests"
-               ReferencedContainer = "container:Signal.xcodeproj">
+               BuildableName = "Dojo.xctest"
+               BlueprintName = "DojoTests"
+               ReferencedContainer = "container:Dojo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AAC9FC891D832B640043E020"
-               BuildableName = "SignalUITests.xctest"
-               BlueprintName = "SignalUITests"
-               ReferencedContainer = "container:Signal.xcodeproj">
+               BuildableName = "Dojo.xctest"
+               BlueprintName = "DojoUITests"
+               ReferencedContainer = "container:Dojo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AAC9FC671D832B640043E020"
-            BuildableName = "Signal.app"
-            BlueprintName = "Signal"
-            ReferencedContainer = "container:Signal.xcodeproj">
+            BuildableName = "Dojo.app"
+            BlueprintName = "Dojo"
+            ReferencedContainer = "container:Dojo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AAC9FC671D832B640043E020"
-            BuildableName = "Signal.app"
-            BlueprintName = "Signal"
-            ReferencedContainer = "container:Signal.xcodeproj">
+            BuildableName = "Dojo.app"
+            BlueprintName = "Dojo"
+            ReferencedContainer = "container:Dojo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AAC9FC671D832B640043E020"
-            BuildableName = "Signal.app"
-            BlueprintName = "Signal"
-            ReferencedContainer = "container:Signal.xcodeproj">
+            BuildableName = "Dojo.app"
+            BlueprintName = "Dojo"
+            ReferencedContainer = "container:Dojo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

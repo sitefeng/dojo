@@ -101,7 +101,7 @@
 		AAB4C9081D84A43600A2CC70 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AAB4C90A1D84A54600A2CC70 /* UIColor+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
 		AAB4C90B1D84A54600A2CC70 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
-		AAC9FC681D832B640043E020 /* Signal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC9FC681D832B640043E020 /* Dojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC9FC6B1D832B640043E020 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAC9FC6D1D832B640043E020 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AAC9FC701D832B640043E020 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,10 +109,10 @@
 		AAC9FC751D832B640043E020 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAC9FC781D832B640043E020 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAC9FC7A1D832B640043E020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAC9FC7F1D832B640043E020 /* SignalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC9FC7F1D832B640043E020 /* Dojo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dojo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC9FC831D832B640043E020 /* SignalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalTests.swift; sourceTree = "<group>"; };
 		AAC9FC851D832B640043E020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAC9FC8A1D832B640043E020 /* SignalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC9FC8A1D832B640043E020 /* Dojo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dojo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC9FC8E1D832B640043E020 /* SignalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalUITests.swift; sourceTree = "<group>"; };
 		AAC9FC901D832B640043E020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAC9FC9C1D8337640043E020 /* Signal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Signal-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -286,9 +286,9 @@
 		AAC9FC691D832B640043E020 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AAC9FC681D832B640043E020 /* Signal.app */,
-				AAC9FC7F1D832B640043E020 /* SignalTests.xctest */,
-				AAC9FC8A1D832B640043E020 /* SignalUITests.xctest */,
+				AAC9FC681D832B640043E020 /* Dojo.app */,
+				AAC9FC7F1D832B640043E020 /* Dojo.xctest */,
+				AAC9FC8A1D832B640043E020 /* Dojo.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -334,9 +334,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AAC9FC671D832B640043E020 /* Signal */ = {
+		AAC9FC671D832B640043E020 /* Dojo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAC9FC931D832B640043E020 /* Build configuration list for PBXNativeTarget "Signal" */;
+			buildConfigurationList = AAC9FC931D832B640043E020 /* Build configuration list for PBXNativeTarget "Dojo" */;
 			buildPhases = (
 				A1A30922F9EF86AD3E66DECC /* [CP] Check Pods Manifest.lock */,
 				AAC9FC641D832B640043E020 /* Sources */,
@@ -349,14 +349,14 @@
 			);
 			dependencies = (
 			);
-			name = Signal;
+			name = Dojo;
 			productName = Signal;
-			productReference = AAC9FC681D832B640043E020 /* Signal.app */;
+			productReference = AAC9FC681D832B640043E020 /* Dojo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AAC9FC7E1D832B640043E020 /* SignalTests */ = {
+		AAC9FC7E1D832B640043E020 /* DojoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAC9FC961D832B640043E020 /* Build configuration list for PBXNativeTarget "SignalTests" */;
+			buildConfigurationList = AAC9FC961D832B640043E020 /* Build configuration list for PBXNativeTarget "DojoTests" */;
 			buildPhases = (
 				D99835862B14FED17906F8F8 /* [CP] Check Pods Manifest.lock */,
 				AAC9FC7B1D832B640043E020 /* Sources */,
@@ -370,14 +370,14 @@
 			dependencies = (
 				AAC9FC811D832B640043E020 /* PBXTargetDependency */,
 			);
-			name = SignalTests;
+			name = DojoTests;
 			productName = SignalTests;
-			productReference = AAC9FC7F1D832B640043E020 /* SignalTests.xctest */;
+			productReference = AAC9FC7F1D832B640043E020 /* Dojo.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AAC9FC891D832B640043E020 /* SignalUITests */ = {
+		AAC9FC891D832B640043E020 /* DojoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAC9FC991D832B640043E020 /* Build configuration list for PBXNativeTarget "SignalUITests" */;
+			buildConfigurationList = AAC9FC991D832B640043E020 /* Build configuration list for PBXNativeTarget "DojoUITests" */;
 			buildPhases = (
 				A8B78D7D2101CF90104A26FE /* [CP] Check Pods Manifest.lock */,
 				AAC9FC861D832B640043E020 /* Sources */,
@@ -390,9 +390,9 @@
 			dependencies = (
 				AAC9FC8C1D832B640043E020 /* PBXTargetDependency */,
 			);
-			name = SignalUITests;
+			name = DojoUITests;
 			productName = SignalUITests;
-			productReference = AAC9FC8A1D832B640043E020 /* SignalUITests.xctest */;
+			productReference = AAC9FC8A1D832B640043E020 /* Dojo.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -419,7 +419,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AAC9FC631D832B640043E020 /* Build configuration list for PBXProject "Signal" */;
+			buildConfigurationList = AAC9FC631D832B640043E020 /* Build configuration list for PBXProject "Dojo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -432,9 +432,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AAC9FC671D832B640043E020 /* Signal */,
-				AAC9FC7E1D832B640043E020 /* SignalTests */,
-				AAC9FC891D832B640043E020 /* SignalUITests */,
+				AAC9FC671D832B640043E020 /* Dojo */,
+				AAC9FC7E1D832B640043E020 /* DojoTests */,
+				AAC9FC891D832B640043E020 /* DojoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -648,12 +648,12 @@
 /* Begin PBXTargetDependency section */
 		AAC9FC811D832B640043E020 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AAC9FC671D832B640043E020 /* Signal */;
+			target = AAC9FC671D832B640043E020 /* Dojo */;
 			targetProxy = AAC9FC801D832B640043E020 /* PBXContainerItemProxy */;
 		};
 		AAC9FC8C1D832B640043E020 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AAC9FC671D832B640043E020 /* Signal */;
+			target = AAC9FC671D832B640043E020 /* Dojo */;
 			targetProxy = AAC9FC8B1D832B640043E020 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -771,8 +771,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Signal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.Signal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.Dojo;
+				PRODUCT_NAME = Dojo;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/Signal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -789,8 +789,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Signal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.Signal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.Dojo;
+				PRODUCT_NAME = Dojo;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/Signal-Bridging-Header.h";
 			};
@@ -804,8 +804,8 @@
 				INFOPLIST_FILE = SignalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SignalTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
+				PRODUCT_NAME = Dojo;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dojo.app/Dojo";
 			};
 			name = Debug;
 		};
@@ -817,8 +817,8 @@
 				INFOPLIST_FILE = SignalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SignalTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
+				PRODUCT_NAME = Dojo;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dojo.app/Dojo";
 			};
 			name = Release;
 		};
@@ -829,7 +829,7 @@
 				INFOPLIST_FILE = SignalUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SignalUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Dojo;
 				TEST_TARGET_NAME = Signal;
 			};
 			name = Debug;
@@ -841,7 +841,7 @@
 				INFOPLIST_FILE = SignalUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SignalUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Dojo;
 				TEST_TARGET_NAME = Signal;
 			};
 			name = Release;
@@ -849,7 +849,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AAC9FC631D832B640043E020 /* Build configuration list for PBXProject "Signal" */ = {
+		AAC9FC631D832B640043E020 /* Build configuration list for PBXProject "Dojo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAC9FC911D832B640043E020 /* Debug */,
@@ -858,7 +858,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAC9FC931D832B640043E020 /* Build configuration list for PBXNativeTarget "Signal" */ = {
+		AAC9FC931D832B640043E020 /* Build configuration list for PBXNativeTarget "Dojo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAC9FC941D832B640043E020 /* Debug */,
@@ -867,7 +867,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAC9FC961D832B640043E020 /* Build configuration list for PBXNativeTarget "SignalTests" */ = {
+		AAC9FC961D832B640043E020 /* Build configuration list for PBXNativeTarget "DojoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAC9FC971D832B640043E020 /* Debug */,
@@ -876,7 +876,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAC9FC991D832B640043E020 /* Build configuration list for PBXNativeTarget "SignalUITests" */ = {
+		AAC9FC991D832B640043E020 /* Build configuration list for PBXNativeTarget "DojoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAC9FC9A1D832B640043E020 /* Debug */,

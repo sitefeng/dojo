@@ -12,7 +12,7 @@ final internal class AssociationItem: NSObject {
 
     var name: String = ""
     var imageURL: NSURL = NSURL()
-    var translation: String = ""
+    var translation: String = "" //foreign language
     
     convenience init(rawDictionary: [String: AnyObject]) {
         self.init()
