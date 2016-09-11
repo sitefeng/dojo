@@ -11,7 +11,10 @@ import AVFoundation
 
 final internal class ScavengerCaptureViewController: UIViewController {
     
+    // in foreign language
     var huntWord: String = ""
+    // in english
+    var englishWord: String = ""
 
     private var _imageCaptureSession: AVCaptureSession!
     private var _captureLayer: AVCaptureVideoPreviewLayer!
@@ -25,9 +28,10 @@ final internal class ScavengerCaptureViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var captureButton: ActionGlowButton!
     
-    convenience init(scavengerWord: String) {
+    convenience init(scavengerWord: String, wordInEnglish: String) {
         self.init(nibName: "ScavengerCaptureViewController", bundle: nil)
         huntWord = scavengerWord
+        englishWord = wordInEnglish
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -114,7 +118,7 @@ final internal class ScavengerCaptureViewController: UIViewController {
         
         let request = NetworkRequests()
         
-        request.verify(data, itemName: huntWord) { (success, resultCorrect, associations) in
+        request.verify(data, itemName: englishWord) { (success, resultCorrect, associations) in
             
             guard success else {
                 print("Error: verify not successful")
@@ -129,7 +133,7 @@ final internal class ScavengerCaptureViewController: UIViewController {
                     return
                 }
                 
-                let completionViewController = ScavengerCompletionViewController(capturedImage: image, associations: associations, itemName: self.huntWord)
+                let completionViewController = ScavengerCompletionViewController(capturedImage: image, guessCorrectness: resultCorrect, associations: associations, itemName: self.huntWord)
                 self.presentViewController(completionViewController, animated: true, completion: nil)
             })
             

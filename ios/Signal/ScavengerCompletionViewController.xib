@@ -19,6 +19,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScavengerCompletionViewController" customModule="Signal" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="w1q-Qg-fK7" id="31r-Nn-kzH"/>
+                <outlet property="correctnessImageView" destination="nnf-Nv-ai1" id="cKx-aS-n0L"/>
                 <outlet property="imageView" destination="HYs-SG-cSq" id="oUi-0X-lOo"/>
                 <outlet property="mainLabel" destination="FZy-Tp-4zg" id="J5N-mf-Kdr"/>
                 <outlet property="relatedTableView" destination="N6B-cn-Ona" id="FHA-Id-VMC"/>
@@ -106,6 +107,13 @@
                         <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="lfc-Te-KT8"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wrong" translatesAutoresizingMaskIntoConstraints="NO" id="nnf-Nv-ai1">
+                    <rect key="frame" x="241" y="111" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="bmq-Ve-9Sc"/>
+                        <constraint firstAttribute="height" constant="50" id="wmz-oF-Lt8"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -114,12 +122,14 @@
                 <constraint firstItem="w1q-Qg-fK7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8iN-2g-h55"/>
                 <constraint firstAttribute="bottom" secondItem="w1q-Qg-fK7" secondAttribute="bottom" constant="21" id="DdG-lr-yre"/>
                 <constraint firstAttribute="trailing" secondItem="n1N-6L-XhE" secondAttribute="trailing" constant="10" id="Nxu-4h-tBw"/>
+                <constraint firstItem="nnf-Nv-ai1" firstAttribute="leading" secondItem="HYs-SG-cSq" secondAttribute="trailing" constant="-32" id="PLF-6b-dM6"/>
                 <constraint firstAttribute="bottom" secondItem="dEZ-wU-G1a" secondAttribute="bottom" id="Q3X-s8-7Kw"/>
                 <constraint firstItem="dEZ-wU-G1a" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TQg-eM-e3g"/>
                 <constraint firstAttribute="trailing" secondItem="dEZ-wU-G1a" secondAttribute="trailing" id="hc6-jG-K8R"/>
                 <constraint firstItem="HYs-SG-cSq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jB6-2b-Znl"/>
                 <constraint firstItem="HYs-SG-cSq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="33" id="kzI-hZ-JWe"/>
                 <constraint firstItem="n1N-6L-XhE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="qqD-3V-SAq"/>
+                <constraint firstItem="nnf-Nv-ai1" firstAttribute="baseline" secondItem="HYs-SG-cSq" secondAttribute="baseline" id="rUh-by-j5b"/>
                 <constraint firstItem="n1N-6L-XhE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="s14-Fb-rzk"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -131,5 +141,6 @@
         <image name="mainButtonColor" width="44" height="44"/>
         <image name="tempGradient" width="2" height="1920"/>
         <image name="uw" width="619" height="619"/>
+        <image name="wrong" width="96" height="96"/>
     </resources>
 </document>

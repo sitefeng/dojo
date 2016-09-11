@@ -13,11 +13,13 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
     private let kCellReuseIdentifier = "kCellReuseIdentifier"
     
     private var scavengerImage: UIImage?
+    private var correctness: Bool = false
     private var associationItems: [AssociationItem]!
     private var scavengerName: String = ""
-    private var translatedName: String = ""
+    private var englishName: String = ""
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var correctnessImageView: UIImageView!
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var secondaryLabel: UILabel!
@@ -25,10 +27,11 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
     @IBOutlet weak var relatedTableView: UITableView!
     @IBOutlet weak var backButton: ActionGlowButton!
     
-    convenience init(capturedImage: UIImage, associations: [AssociationItem], itemName: String) {
+    convenience init(capturedImage: UIImage, guessCorrectness: Bool, associations: [AssociationItem], itemName: String) {
         self.init(nibName: "ScavengerCompletionViewController", bundle: nil)
         
         scavengerImage = capturedImage
+        correctness = guessCorrectness
         associationItems = associations
         scavengerName = itemName
     }
@@ -49,9 +52,9 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
         let request = NetworkRequests()
         request.translate([scavengerName], index: 0, destinationLanguage: SignalConstants.AppDefaultLanguageCode) { (success, _, translatedWords) in
             
-            self.translatedName = translatedWords.first ?? ""
+            self.englishName = translatedWords.first ?? ""
             NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                self.secondaryLabel.text = self.translatedName
+                self.secondaryLabel.text = self.englishName
             })
         }
 
@@ -61,6 +64,12 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
         imageView.layer.masksToBounds = true
         imageView.layer.borderColor = UIColor.whiteColor().CGColor
         imageView.layer.borderWidth = 6
+        
+        if correctness {
+            correctnessImageView.image = UIImage(named: "correct")
+        } else {
+            correctnessImageView.image = UIImage(named: "wrong")
+        }
         
         whiteView.layer.cornerRadius = 10
         whiteView.layer.masksToBounds = true
@@ -73,7 +82,11 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
         relatedTableView.dataSource = self
         relatedTableView.delegate = self
         
-        backButton.setupButtonWithTitle("BACK TO HUNT")
+        if correctness {
+            backButton.setupButtonWithTitle("BACK TO HUNT")
+        } else {
+            backButton.setupButtonWithTitle("TRY AGAIN")
+        }
     }
     
     // MARK: Table View Data Source
@@ -106,8 +119,11 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
 
     @IBAction func backButtonTapped(sender: AnyObject) {
         
-        self.dismissViewControllerAnimated(true) { 
-            NSNotificationCenter.defaultCenter().postNotificationName(SignalConstants.SignalScavengerCompletedNotification, object: self)
+        self.dismissViewControllerAnimated(true) {
+            
+            if self.correctness == true {
+                NSNotificationCenter.defaultCenter().postNotificationName(SignalConstants.SignalScavengerCompletedNotification, object: self)
+            }
         }
         
     }

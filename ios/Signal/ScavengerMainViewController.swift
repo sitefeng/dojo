@@ -76,8 +76,6 @@ class ScavengerMainViewController: UIViewController {
             index += 1
         }
         
-        // Load Content
-        reloadSubViewControllers()
     }
     
     
@@ -99,8 +97,11 @@ class ScavengerMainViewController: UIViewController {
         var index = 0
         for wordsForLevel in translatedWordsForLevelControllers {
             
-            let levelHuntViewController = ScavengerHuntViewController(wordsForLevel: wordsForLevel, levelValue: index + 1)
+            let levelHuntViewController = ScavengerHuntViewController(wordsForLevel: wordsForLevel, englishTranslations: wordsForLevelControllers[index],  levelValue: index + 1)
             levelHuntViewController.view.frame = CGRect(x: screenWidth * CGFloat(index), y: 0, width: screenWidth, height: levelHeight)
+            levelHuntViewController.view.layer.shadowColor = UIColor.blackColor().CGColor
+            levelHuntViewController.view.layer.shadowOpacity = 0.5
+            
             levelViewControllers.append(levelHuntViewController)
             self.addChildViewController(levelHuntViewController)
             

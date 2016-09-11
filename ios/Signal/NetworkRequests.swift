@@ -93,6 +93,8 @@ final internal class NetworkRequests: NSObject {
             urlPath += ",\(word)"
         }
         
+        urlPath = urlPath.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
         Alamofire.request(.GET, urlPath, parameters: nil, encoding: ParameterEncoding.URL, headers: nil).response { (request, response, data, error) in
             guard error == nil else {
                 print("error: \(error)")

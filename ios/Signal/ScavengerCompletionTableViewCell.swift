@@ -33,8 +33,13 @@ final internal class ScavengerCompletionTableViewCell: UITableViewCell {
 
     func setupCell(mainText: String, secondaryText: String, imageURL: NSURL) {
         _mainText = mainText
+        mainLabel.text = _mainText
+        
         _secondaryText = secondaryText
+        secondaryLabel.text = _secondaryText
+        
         _imageURL = imageURL
+        asyncView.imageURL = _imageURL
     }
     
 }

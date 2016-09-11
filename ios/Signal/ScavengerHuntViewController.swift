@@ -25,6 +25,8 @@ final internal class ScavengerHuntViewController: UIViewController, UICollection
     
     
     var listOfWords: [String] = []
+    var englishWords: [String] = []
+    
     var level: NSInteger = 0
     
     var requiredWordCount: NSInteger {
@@ -43,10 +45,11 @@ final internal class ScavengerHuntViewController: UIViewController, UICollection
         super.init(coder: aDecoder)
     }
     
-    convenience init(wordsForLevel: [String], levelValue: NSInteger) {
+    convenience init(wordsForLevel: [String], englishTranslations: [String], levelValue: NSInteger) {
         self.init(nibName: "ScavengerHuntViewController", bundle: nil)
         level = levelValue
         listOfWords = wordsForLevel
+        englishWords = englishTranslations
     }
     
     override func viewDidLoad() {
@@ -115,7 +118,7 @@ final internal class ScavengerHuntViewController: UIViewController, UICollection
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let scavengerCaptureViewController = ScavengerCaptureViewController(scavengerWord: listOfWords[indexPath.row])
+        let scavengerCaptureViewController = ScavengerCaptureViewController(scavengerWord: listOfWords[indexPath.row], wordInEnglish: englishWords[indexPath.row])
         self.presentViewController(scavengerCaptureViewController, animated: true, completion: nil)
         
     }

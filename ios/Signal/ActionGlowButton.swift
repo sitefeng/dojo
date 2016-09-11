@@ -22,6 +22,8 @@ class ActionGlowButton: UIButton {
     
     func setupButtonWithTitle(title: String) {
         
+        self.setTitle(title, forState: .Normal)
+        
         let backgroundImage = UIImage(named: "mainButtonColor")
         self.setBackgroundImage(backgroundImage, forState: UIControlState.Normal)
         
