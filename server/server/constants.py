@@ -15,4 +15,3 @@ ASSOCIATIONS = {
            {'knife': 'https://www.togknives.com/wp-content/uploads/2013/07/TOG-Gyuto-3Quarter-Cutout.jpg'},
              {'eat': 'http://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/adhd_feed_your_child_slideshow/getty_rf_photo_of_boy_eating_meatball.jpg'}]
         }
-

@@ -39,7 +39,7 @@ def words_response():
     translated_words = []
     for word in words:
         translated_word = lib.get_translation(word, lang)
-        translated_words.append(word)
+        translated_words.append(translated_word)
     return json.dumps({'words': translated_words,
                            'language': lang}), 200
 
