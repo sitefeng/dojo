@@ -43,7 +43,7 @@ def words_response():
     translated_words = []
     for word in words:
         translated_word = get_translation(word, lang)
-        translated_words.append(word)
+        translated_words.append(translated_word)
     return json.dumps({'words': translated_words,
                            'language': lang}), 200
 
@@ -86,6 +86,7 @@ def verify_response():
 
 
 def get_translated_associations(request):
+    print request
     translations = []
     associations = CONSTANTS.ASSOCIATIONS[request.form['name']]
     for association in associations:
