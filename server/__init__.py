@@ -4,6 +4,3 @@ app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-import server.verify
-

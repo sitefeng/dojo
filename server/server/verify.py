@@ -1,4 +1,5 @@
 import json
+import requests
 import os
 
 from server import app
@@ -6,10 +7,12 @@ from server import constants as CONSTANTS
 from server import lib
 from flask import request
 
-ALLOWED_EXTENSIONS = set(['jpg', 'png'])
+from pymongo import MongoClient
 
 KNOWN_WORDS = [key for key in CONSTANTS.ASSOCIATIONS]
-print KNOWN_WORDS
+
+MONGO = MongoClient()
+db = MONGO.prod_app
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -18,9 +21,7 @@ def allowed_file(filename):
 def verify_image(filename):
     api_results = lib.get_clarifai(filename)
 
-    print api_results
     for probability in sorted(api_results, reverse=True):
-        print probability
         if api_results[probability] in KNOWN_WORDS:
             if request.form['name'] != api_results[probability]:
                 return False
@@ -29,11 +30,28 @@ def verify_image(filename):
 
     return False
 
+
+@app.route('/words', methods=['GET'])
+def words_response():
+    lang = request.args.get('language')
+    words = request.args.get('list').split(',')
+
+    translated_words = []
+    for word in words:
+        translated_word = lib.get_translation(word, lang)
+        translated_words.append(word)
+    return json.dumps({'words': translated_words,
+                           'language': lang}), 200
+
+
 @app.route('/verify', methods=['POST'])
-def response():
+def verify_response():
     filename = request.files['image'].filename
 
     error_reason = ''
+
+    if 'name' not in request.form:
+        error_reason = 'no name'
 
     if 'image' not in request.files:
         error_reason = 'no image'
@@ -42,11 +60,8 @@ def response():
 
     file = request.files['image']
 
-    if not file or not allowed_file(filename):
+    if not file or not lib.allowed_file(filename):
         error_reason = 'not allowed filename'
-
-    if 'name' not in request.form:
-        error_reason = 'no name'
 
     if 'language' not in request.form:
         error_reason = 'no language'
@@ -56,22 +71,21 @@ def response():
         error_message = {'error': error_reason}
         return json.dumps(error_message), 400
 
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    dest = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save(dest)
 
     if verify_image(filename):
-        return json.dumps({'associations': CONSTANTS.ASSOCIATIONS[request.form['name']],
+        associations = lib.association_with_translation(request.form['language'],
+                                                        CONSTANTS.ASSOCIATIONS[request.form['name']])
+        db.entries.insert_one(
+            {
+                'name': request.form['name'],
+                'dest': dest,
+                'associations': associations,
+                'lang': request.form['language']
+            }
+        )
+        return json.dumps({'associations': associations,
                            'result': True}), 200
 
     return json.dumps({ 'associations': [], 'result': False }), 200
-
-
-@app.errorhandler(400)
-def badrequest_exception(e):
-    app.logger.error('Unhandled Exception: %s', (e))
-    return json.dumps({'error': e}), 400
-
-
-@app.errorhandler(Exception)
-def unhandled_exception(e):
-    app.logger.error('Unhandled Exception: %s', (e))
-    return json.dumps({'error': e}), 500
