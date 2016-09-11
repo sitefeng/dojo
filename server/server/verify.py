@@ -1,4 +1,5 @@
 import json
+import requests
 import os
 
 from server import app
@@ -9,18 +10,17 @@ from flask import request
 ALLOWED_EXTENSIONS = set(['jpg', 'png'])
 
 KNOWN_WORDS = [key for key in CONSTANTS.ASSOCIATIONS]
-print KNOWN_WORDS
+
 
 def allowed_file(filename):
     return '.' in filename and \
             filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
 def verify_image(filename):
     api_results = lib.get_clarifai(filename)
 
-    print api_results
     for probability in sorted(api_results, reverse=True):
-        print probability
         if api_results[probability] in KNOWN_WORDS:
             if request.form['name'] != api_results[probability]:
                 return False
@@ -29,8 +29,29 @@ def verify_image(filename):
 
     return False
 
+
+def get_translation(source_text, dest_lang):
+    link = "https://www.googleapis.com/language/translate/v2?q=" + source_text + "&target=" + dest_lang + "&key=AIzaSyAEq1snggjJn11nZ3-BZzdToUcKdYG5y60"
+    response_body = requests.get(link).content
+    translated_word = json.loads(response_body)[u'data'][u'translations'][0][u'translatedText']
+    return translated_word
+
+
+@app.route('/words', methods=['GET'])
+def words_response():
+    lang = request.args.get('language')
+    words = request.args.get('list').split(',')
+
+    translated_words = []
+    for word in words:
+        translated_word = get_translation(word, lang)
+        translated_words.append(word)
+    return json.dumps({'words': translated_words,
+                           'language': lang}), 200
+
+
 @app.route('/verify', methods=['POST'])
-def response():
+def verify_response():
     filename = request.files['image'].filename
 
     error_reason = ''
@@ -59,10 +80,23 @@ def response():
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
     if verify_image(filename):
-        return json.dumps({'associations': CONSTANTS.ASSOCIATIONS[request.form['name']],
+        associations = get_translated_associations(request)
+        return json.dumps({'associations': associations,
                            'result': True}), 200
 
     return json.dumps({ 'associations': [], 'result': False }), 200
+
+
+def get_translated_associations(request):
+    translations = []
+    associations = CONSTANTS.ASSOCIATIONS[request.form['name']]
+    for association in associations:
+        for pair in association:
+            translated_word = get_translation(pair, request.form['language'])
+            pairing = {}
+            pairing[translated_word] = association[pair]
+            translations.append(pairing)
+    return translations
 
 
 @app.errorhandler(400)
