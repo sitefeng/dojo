@@ -3,7 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -17,31 +23,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJE-Og-2sB">
-                                <rect key="frame" x="258" y="281" width="84" height="38"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pL-xe-PHd">
+                                <rect key="frame" x="0.0" y="239" width="600" height="254"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT LANGUAGE YOU WANT TO LEARN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ah-GA-4pC">
+                                <rect key="frame" x="20" y="210" width="560" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="84" id="IPb-uF-CxR"/>
-                                    <constraint firstAttribute="height" constant="38" id="XkL-vW-HE1"/>
+                                    <constraint firstAttribute="height" constant="21" id="V6Z-0m-VoO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Log in ">
-                                    <color key="titleColor" red="0.42427724599838257" green="0.80670231580734253" blue="0.70506024360656738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                <color key="textColor" red="0.424277246" green="0.80670231579999996" blue="0.70506024359999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uw" translatesAutoresizingMaskIntoConstraints="NO" id="Rc0-Pd-SuT">
+                                <rect key="frame" x="216" y="35" width="168" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="1dM-lA-LOx"/>
+                                    <constraint firstAttribute="width" constant="168" id="dXF-Tv-fTS"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJE-Og-2sB" customClass="ActionGlowButton" customModule="Signal" customModuleProvider="target">
+                                <rect key="frame" x="20" y="515" width="560" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="YeA-y9-sFx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Start" backgroundImage="mainButtonColor">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aoI-mJ-WBM"/>
+                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="opk-dm-TD5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cJE-Og-2sB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Y1Z-qW-BpU"/>
-                            <constraint firstItem="cJE-Og-2sB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YMM-bc-Po9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cJE-Og-2sB" secondAttribute="trailing" id="0Ry-At-r2t"/>
+                            <constraint firstItem="9ah-GA-4pC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="7Vl-hk-Wmm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9ah-GA-4pC" secondAttribute="trailing" id="EYc-a8-Gu3"/>
+                            <constraint firstItem="cJE-Og-2sB" firstAttribute="top" secondItem="0pL-xe-PHd" secondAttribute="bottom" constant="25" id="Gsu-ic-bwa"/>
+                            <constraint firstItem="9ah-GA-4pC" firstAttribute="top" secondItem="Rc0-Pd-SuT" secondAttribute="bottom" constant="25" id="JX8-23-NvH"/>
+                            <constraint firstItem="cJE-Og-2sB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="O0o-rq-anj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0pL-xe-PHd" secondAttribute="trailing" constant="-20" id="Yh5-z5-STe"/>
+                            <constraint firstItem="0pL-xe-PHd" firstAttribute="top" secondItem="9ah-GA-4pC" secondAttribute="bottom" constant="8" id="jnE-7j-jKY"/>
+                            <constraint firstItem="Rc0-Pd-SuT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rX6-JZ-fQz"/>
+                            <constraint firstItem="0pL-xe-PHd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="rij-Is-cOY"/>
+                            <constraint firstItem="Rc0-Pd-SuT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="sfA-oy-197"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cJE-Og-2sB" secondAttribute="bottom" constant="44" id="ygb-7f-kWq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="cJE-Og-2sB" id="TQO-vc-da8"/>
+                        <outlet property="pickerView" destination="0pL-xe-PHd" id="xLj-ot-QiP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="136"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mainButtonColor" width="44" height="44"/>
+        <image name="uw" width="619" height="619"/>
+    </resources>
 </document>

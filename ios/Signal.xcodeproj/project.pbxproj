@@ -10,6 +10,12 @@
 		08DCAC5CB1CC2ED238485A0D /* Pods_Signal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA4D757F19DBF7BE5960436 /* Pods_Signal.framework */; };
 		111408BEC250AB0A06F1E5D1 /* Pods_SignalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E69F2959FBAC58CE16CD6C /* Pods_SignalUITests.framework */; };
 		122074D64E9469903A3ACED5 /* Pods_SignalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD00A0DE62ED1F70DB5DFB2 /* Pods_SignalTests.framework */; };
+		AA9463951D84C70A00A6113E /* ScavengerCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9463931D84C70A00A6113E /* ScavengerCompletionViewController.swift */; };
+		AA9463961D84C70A00A6113E /* ScavengerCompletionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9463941D84C70A00A6113E /* ScavengerCompletionViewController.xib */; };
+		AA94639A1D84FF2F00A6113E /* ScavengerCompletionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9463981D84FF2F00A6113E /* ScavengerCompletionTableViewCell.swift */; };
+		AA94639B1D84FF2F00A6113E /* ScavengerCompletionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9463991D84FF2F00A6113E /* ScavengerCompletionTableViewCell.xib */; };
+		AA94639D1D851B4000A6113E /* SignalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA94639C1D851B4000A6113E /* SignalConstants.swift */; };
+		AA94639F1D85208A00A6113E /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA94639E1D85208A00A6113E /* NetworkRequests.swift */; };
 		AAB4C8DF1D8438B200A2CC70 /* SignalAppGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4C8DE1D8438B200A2CC70 /* SignalAppGlobals.swift */; };
 		AAB4C8E11D843FFE00A2CC70 /* ImageAnalysisAccessRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4C8E01D843FFE00A2CC70 /* ImageAnalysisAccessRequest.swift */; };
 		AAB4C8E51D844EB400A2CC70 /* LanguageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4C8E31D844EB400A2CC70 /* LanguageSelectViewController.swift */; };
@@ -67,6 +73,12 @@
 		23BE2F979B848599F75EAED8 /* Pods-SignalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalUITests/Pods-SignalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6DF0A390884D8F29522BF0B5 /* Pods-Signal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Signal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Signal/Pods-Signal.debug.xcconfig"; sourceTree = "<group>"; };
 		7CA4D757F19DBF7BE5960436 /* Pods_Signal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Signal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA9463931D84C70A00A6113E /* ScavengerCompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScavengerCompletionViewController.swift; sourceTree = "<group>"; };
+		AA9463941D84C70A00A6113E /* ScavengerCompletionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScavengerCompletionViewController.xib; sourceTree = "<group>"; };
+		AA9463981D84FF2F00A6113E /* ScavengerCompletionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScavengerCompletionTableViewCell.swift; sourceTree = "<group>"; };
+		AA9463991D84FF2F00A6113E /* ScavengerCompletionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScavengerCompletionTableViewCell.xib; sourceTree = "<group>"; };
+		AA94639C1D851B4000A6113E /* SignalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalConstants.swift; sourceTree = "<group>"; };
+		AA94639E1D85208A00A6113E /* NetworkRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
 		AAB4C8DE1D8438B200A2CC70 /* SignalAppGlobals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalAppGlobals.swift; sourceTree = "<group>"; };
 		AAB4C8E01D843FFE00A2CC70 /* ImageAnalysisAccessRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAnalysisAccessRequest.swift; sourceTree = "<group>"; };
 		AAB4C8E31D844EB400A2CC70 /* LanguageSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageSelectViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +181,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA9463971D84FF0400A6113E /* Scavenger */ = {
+			isa = PBXGroup;
+			children = (
+				AAB4C8F51D847A1900A2CC70 /* ScavengerMainViewController.swift */,
+				AAB4C8F61D847A1900A2CC70 /* ScavengerMainViewController.xib */,
+				AAB4C8E71D844F4800A2CC70 /* ScavengerHuntViewController.swift */,
+				AAB4C8E81D844F4800A2CC70 /* ScavengerHuntViewController.xib */,
+				AAB4C8EB1D84502800A2CC70 /* ScavengerCollectionViewCell.swift */,
+				AAB4C8EC1D84502800A2CC70 /* ScavengerCollectionViewCell.xib */,
+				AAB4C8EF1D8451D100A2CC70 /* ScavengerCaptureViewController.swift */,
+				AAB4C8F01D8451D100A2CC70 /* ScavengerCaptureViewController.xib */,
+				AA9463931D84C70A00A6113E /* ScavengerCompletionViewController.swift */,
+				AA9463941D84C70A00A6113E /* ScavengerCompletionViewController.xib */,
+				AA9463981D84FF2F00A6113E /* ScavengerCompletionTableViewCell.swift */,
+				AA9463991D84FF2F00A6113E /* ScavengerCompletionTableViewCell.xib */,
+			);
+			name = Scavenger;
+			sourceTree = "<group>";
+		};
+		AA9463A01D85208E00A6113E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AA94639E1D85208A00A6113E /* NetworkRequests.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		AAB4C8E21D844D1800A2CC70 /* Useless */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,14 +245,7 @@
 				AAB4C8E01D843FFE00A2CC70 /* ImageAnalysisAccessRequest.swift */,
 				AAB4C8E31D844EB400A2CC70 /* LanguageSelectViewController.swift */,
 				AAB4C8E41D844EB400A2CC70 /* LanguageSelectViewController.xib */,
-				AAB4C8F51D847A1900A2CC70 /* ScavengerMainViewController.swift */,
-				AAB4C8F61D847A1900A2CC70 /* ScavengerMainViewController.xib */,
-				AAB4C8E71D844F4800A2CC70 /* ScavengerHuntViewController.swift */,
-				AAB4C8E81D844F4800A2CC70 /* ScavengerHuntViewController.xib */,
-				AAB4C8EB1D84502800A2CC70 /* ScavengerCollectionViewCell.swift */,
-				AAB4C8EC1D84502800A2CC70 /* ScavengerCollectionViewCell.xib */,
-				AAB4C8EF1D8451D100A2CC70 /* ScavengerCaptureViewController.swift */,
-				AAB4C8F01D8451D100A2CC70 /* ScavengerCaptureViewController.xib */,
+				AA9463971D84FF0400A6113E /* Scavenger */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -222,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				AAB4C8DE1D8438B200A2CC70 /* SignalAppGlobals.swift */,
+				AA94639C1D851B4000A6113E /* SignalConstants.swift */,
 				AAB4C9081D84A43600A2CC70 /* UIColor+Extensions.swift */,
 				AAB4C90A1D84A54600A2CC70 /* UIColor+Helper.h */,
 				AAB4C90B1D84A54600A2CC70 /* UIColor+Helper.m */,
@@ -256,6 +289,7 @@
 			children = (
 				AAC9FC6B1D832B640043E020 /* AppDelegate.swift */,
 				AAB4C9021D8484B100A2CC70 /* Global */,
+				AA9463A01D85208E00A6113E /* Networking */,
 				AAB4C9011D8484A600A2CC70 /* View Controllers */,
 				AAB4C9001D84848900A2CC70 /* Shared Views */,
 				AAB4C8FF1D84843800A2CC70 /* Resources */,
@@ -400,10 +434,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAC9FC791D832B640043E020 /* LaunchScreen.storyboard in Resources */,
+				AA94639B1D84FF2F00A6113E /* ScavengerCompletionTableViewCell.xib in Resources */,
 				AAC9FCA41D833EAA0043E020 /* PhotoSearchViewController.xib in Resources */,
 				AAB4C8EA1D844F4800A2CC70 /* ScavengerHuntViewController.xib in Resources */,
 				AAB4C8EE1D84502800A2CC70 /* ScavengerCollectionViewCell.xib in Resources */,
 				AAB4C8FC1D8482C600A2CC70 /* ActionGlowButton.xib in Resources */,
+				AA9463961D84C70A00A6113E /* ScavengerCompletionViewController.xib in Resources */,
 				AAB4C8F21D8451D100A2CC70 /* ScavengerCaptureViewController.xib in Resources */,
 				AAB4C8F81D847A1900A2CC70 /* ScavengerMainViewController.xib in Resources */,
 				AAB4C9051D8492B700A2CC70 /* Lato-Bold.ttf in Resources */,
@@ -561,6 +597,7 @@
 			files = (
 				AAB4C90C1D84A54600A2CC70 /* UIColor+Helper.m in Sources */,
 				AAB4C8E91D844F4800A2CC70 /* ScavengerHuntViewController.swift in Sources */,
+				AA94639D1D851B4000A6113E /* SignalConstants.swift in Sources */,
 				AAC9FC6E1D832B640043E020 /* ViewController.swift in Sources */,
 				AAC9FCA31D833EAA0043E020 /* PhotoSearchViewController.m in Sources */,
 				AAB4C8DF1D8438B200A2CC70 /* SignalAppGlobals.swift in Sources */,
@@ -571,8 +608,11 @@
 				AAB4C9091D84A43600A2CC70 /* UIColor+Extensions.swift in Sources */,
 				AAB4C8FA1D8481FF00A2CC70 /* ActionGlowButton.swift in Sources */,
 				AAB4C8E51D844EB400A2CC70 /* LanguageSelectViewController.swift in Sources */,
+				AA94639A1D84FF2F00A6113E /* ScavengerCompletionTableViewCell.swift in Sources */,
+				AA94639F1D85208A00A6113E /* NetworkRequests.swift in Sources */,
 				AAC9FC741D832B640043E020 /* Signal.xcdatamodeld in Sources */,
 				AAB4C8ED1D84502800A2CC70 /* ScavengerCollectionViewCell.swift in Sources */,
+				AA9463951D84C70A00A6113E /* ScavengerCompletionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

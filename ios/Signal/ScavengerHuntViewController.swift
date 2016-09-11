@@ -77,6 +77,25 @@ final internal class ScavengerHuntViewController: UIViewController, UICollection
         self.collectionView.dataSource = self
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(scavengerCompleted), name: SignalConstants.SignalScavengerCompletedNotification, object: nil)
+    }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // MARK - NSNotification 
+    func scavengerCompleted() {
+        self.collectionView.reloadData()
+    }
+    
+    // MARK - Collection View
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
