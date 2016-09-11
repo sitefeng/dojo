@@ -11,4 +11,3 @@ ASSOCIATIONS = {
            {'knife': 'https://www.togknives.com/wp-content/uploads/2013/07/TOG-Gyuto-3Quarter-Cutout.jpg'}]
         }
 
-
