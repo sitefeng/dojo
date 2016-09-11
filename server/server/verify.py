@@ -6,8 +6,11 @@ from server import constants as CONSTANTS
 from server import lib
 from flask import request
 
+from pymongo import MongoClient
+
 KNOWN_WORDS = [key for key in CONSTANTS.ASSOCIATIONS]
-print KNOWN_WORDS
+
+MONGO = MongoClient()
 
 def verify_image(filename):
     api_results = lib.get_clarifai(filename)
@@ -29,6 +32,9 @@ def verify():
 
     error_reason = ''
 
+    if 'name' not in request.form:
+        error_reason = 'no name'
+
     if 'image' not in request.files:
         error_reason = 'no image'
         error_message = {'error': error_reason}
@@ -39,9 +45,6 @@ def verify():
     if not file or not lib.allowed_file(filename):
         error_reason = 'not allowed filename'
 
-    if 'name' not in request.form:
-        error_reason = 'no name'
-
     if 'language' not in request.form:
         error_reason = 'no language'
 
@@ -50,9 +53,18 @@ def verify():
         error_message = {'error': error_reason}
         return json.dumps(error_message), 400
 
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    dest = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save(dest)
 
     if verify_image(filename):
+        db = MONGO.prod_app
+        db.entries.insert_one(
+            {
+                'name': request.form['name'],
+                'dest': dest,
+                'associations': CONSTANTS.ASSOCIATIONS[request.form['name']]
+            }
+        )
         return json.dumps({'associations': CONSTANTS.ASSOCIATIONS[request.form['name']],
                            'result': True}), 200
 
