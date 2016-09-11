@@ -7,13 +7,16 @@ from server import constants as CONSTANTS
 from server import lib
 from flask import request
 
+from pymongo import MongoClient
+
 KNOWN_WORDS = [key for key in CONSTANTS.ASSOCIATIONS]
 
+MONGO = MongoClient()
+db = MONGO.prod_app
 
 def allowed_file(filename):
     return '.' in filename and \
             filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 
 def verify_image(filename):
     api_results = lib.get_clarifai(filename)
@@ -26,7 +29,6 @@ def verify_image(filename):
                 return True
 
     return False
-
 
 def get_translation(source_text, dest_lang):
     link = "https://www.googleapis.com/language/translate/v2?q=" + source_text + "&target=" + dest_lang + "&key=AIzaSyAEq1snggjJn11nZ3-BZzdToUcKdYG5y60"
@@ -54,6 +56,9 @@ def verify_response():
 
     error_reason = ''
 
+    if 'name' not in request.form:
+        error_reason = 'no name'
+
     if 'image' not in request.files:
         error_reason = 'no image'
         error_message = {'error': error_reason}
@@ -64,9 +69,6 @@ def verify_response():
     if not file or not lib.allowed_file(filename):
         error_reason = 'not allowed filename'
 
-    if 'name' not in request.form:
-        error_reason = 'no name'
-
     if 'language' not in request.form:
         error_reason = 'no language'
 
@@ -75,10 +77,18 @@ def verify_response():
         error_message = {'error': error_reason}
         return json.dumps(error_message), 400
 
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    dest = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save(dest)
 
     if verify_image(filename):
         associations = get_translated_associations(request)
+        db.entries.insert_one(
+            {
+                'name': request.form['name'],
+                'dest': dest,
+                'associations': associations
+            }
+        )
         return json.dumps({'associations': associations,
                            'result': True}), 200
 
