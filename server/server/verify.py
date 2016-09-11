@@ -7,8 +7,6 @@ from server import constants as CONSTANTS
 from server import lib
 from flask import request
 
-ALLOWED_EXTENSIONS = set(['jpg', 'png'])
-
 KNOWN_WORDS = [key for key in CONSTANTS.ASSOCIATIONS]
 
 
@@ -63,7 +61,7 @@ def verify_response():
 
     file = request.files['image']
 
-    if not file or not allowed_file(filename):
+    if not file or not lib.allowed_file(filename):
         error_reason = 'not allowed filename'
 
     if 'name' not in request.form:
