@@ -1,5 +1,7 @@
 from clarifai.client import ClarifaiApi
 
+ALLOWED_EXTENSIONS = set(['jpg', 'png'])
+
 def get_clarifai(filename):
     clarifai_api = ClarifaiApi()  # assumes environment variables are set.
     result = clarifai_api.tag_images(open('uploads/' + filename, 'rb'))
@@ -14,3 +16,7 @@ def get_clarifai(filename):
         api_results[probability] = tag
 
     return api_results
+
+def allowed_file(filename):
+    return '.' in filename and \
+            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
