@@ -23,7 +23,7 @@ def verify_image(filename):
 
     for probability in sorted(api_results, reverse=True):
         if api_results[probability] in KNOWN_WORDS:
-            if request.form['name'] != api_results[probability]:
+            if request.form['name'].lower() != api_results[probability].lower():
                 return False
             else:
                 return True
@@ -46,7 +46,19 @@ def words_response():
 
 @app.route('/verify', methods=['POST'])
 def verify_response():
+    print "REQUEST: ", request.__dict__
+    print "NAME: ", request.form['name']
+    print "LANGUAGE: ", request.form['language']
+
+    print "FILES: ", request.files
+    print "FILES DICT: ", request.files.__dict__
+    if not request.files['image']:
+        print "NO FILE?"
+
+    print "FILE: ", request.files['image']
+
     filename = request.files['image'].filename
+    print "FILENAME: ", filename
 
     error_reason = ''
 
@@ -56,6 +68,7 @@ def verify_response():
     if 'image' not in request.files:
         error_reason = 'no image'
         error_message = {'error': error_reason}
+        print error_reason
         return json.dumps(error_message), 400
 
     file = request.files['image']
@@ -75,8 +88,12 @@ def verify_response():
     file.save(dest)
 
     if verify_image(filename):
-        associations = lib.association_with_translation(request.form['language'],
-                                                        CONSTANTS.ASSOCIATIONS[request.form['name']])
+        guess = request.form['name'].lower()
+        if guess in CONSTANTS.ASSOCIATIONS:
+            associations = lib.association_with_translation(request.form['language'],
+                                                        CONSTANTS.ASSOCIATIONS[guess])
+        else:
+            associations = []
         db.entries.insert_one(
             {
                 'name': request.form['name'],
