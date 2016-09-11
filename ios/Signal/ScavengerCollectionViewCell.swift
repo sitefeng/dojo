@@ -27,8 +27,6 @@ final internal class ScavengerCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = imageView.frame.height / 2.0
         imageView.layer.masksToBounds = true
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
-        imageView.layer.borderColor = UIColor.blackColor().CGColor
-        imageView.layer.borderWidth = 2
         
         self.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.layer.borderWidth = 1

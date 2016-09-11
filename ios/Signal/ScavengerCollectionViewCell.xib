@@ -18,7 +18,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="239" height="63"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_circle" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-Tg-gO2">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="good_circle" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-Tg-gO2">
                         <rect key="frame" x="20" y="9.5" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="NXg-Rx-Cub"/>
@@ -50,6 +50,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="unchecked_circle" width="84" height="84"/>
+        <image name="good_circle" width="145" height="145"/>
     </resources>
 </document>

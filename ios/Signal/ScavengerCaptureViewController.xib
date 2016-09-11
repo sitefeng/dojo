@@ -8,9 +8,11 @@
         <mutableArray key="Lato-Black.ttf">
             <string>Lato-Black</string>
         </mutableArray>
+        <mutableArray key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+        </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
@@ -31,16 +33,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSC-W7-SWe">
-                    <rect key="frame" x="10" y="94" width="580" height="456"/>
+                    <rect key="frame" x="10" y="96" width="580" height="454"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7b-Jh-QPe" customClass="ActionGlowButton" customModule="Dojo" customModuleProvider="target">
-                    <rect key="frame" x="239" y="530" width="122" height="40"/>
+                    <rect key="frame" x="236" y="526" width="128" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="122" id="H0e-qZ-gFk"/>
-                        <constraint firstAttribute="height" constant="40" id="PAh-GY-wcI"/>
+                        <constraint firstAttribute="width" constant="128" id="H0e-qZ-gFk"/>
+                        <constraint firstAttribute="height" constant="44" id="PAh-GY-wcI"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
                     <state key="normal" title="Capture" backgroundImage="mainButtonColor">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -53,16 +55,16 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="1Dw-7T-VgE"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crème Glacée" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLN-qg-9nb">
-                    <rect key="frame" x="20" y="62" width="560" height="24"/>
+                    <rect key="frame" x="20" y="62" width="560" height="26"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="24" id="8fG-hP-Y1z"/>
+                        <constraint firstAttribute="height" constant="26" id="8fG-hP-Y1z"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="19"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
