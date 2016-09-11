@@ -13,8 +13,9 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
     private let kCellReuseIdentifier = "kCellReuseIdentifier"
     
     private var scavengerImage: UIImage?
-    private var scavengerData: NSData?
+    private var associationItems: [AssociationItem]!
     private var scavengerName: String = ""
+    private var translatedName: String = ""
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var whiteView: UIView!
@@ -24,11 +25,11 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
     @IBOutlet weak var relatedTableView: UITableView!
     @IBOutlet weak var backButton: ActionGlowButton!
     
-    convenience init(capturedImage: UIImage, data: NSData, itemName: String) {
+    convenience init(capturedImage: UIImage, associations: [AssociationItem], itemName: String) {
         self.init(nibName: "ScavengerCompletionViewController", bundle: nil)
         
         scavengerImage = capturedImage
-        scavengerData = data
+        associationItems = associations
         scavengerName = itemName
     }
     
@@ -44,8 +45,15 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let request = NetworkRequests()
         // Requesting for server data
+        let request = NetworkRequests()
+        request.translate([scavengerName], index: 0, destinationLanguage: SignalConstants.AppDefaultLanguageCode) { (success, _, translatedWords) in
+            
+            self.translatedName = translatedWords.first ?? ""
+            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                self.secondaryLabel.text = self.translatedName
+            })
+        }
 
         // Initializing and customizing views
         imageView.image = scavengerImage
@@ -74,11 +82,14 @@ class ScavengerCompletionViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return associationItems.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = relatedTableView.dequeueReusableCellWithIdentifier(kCellReuseIdentifier, forIndexPath: indexPath)
+        let cell = relatedTableView.dequeueReusableCellWithIdentifier(kCellReuseIdentifier, forIndexPath: indexPath) as! ScavengerCompletionTableViewCell
+        
+        let associationItem = associationItems[indexPath.row]
+        cell.setupCell(associationItem.translation, secondaryText: associationItem.name, imageURL: associationItem.imageURL)
         
         return cell
     }

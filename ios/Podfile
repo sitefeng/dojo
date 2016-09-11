@@ -7,7 +7,7 @@ target 'Signal' do
 
   # Pods for Signal
   pod 'SnapKit', '~> 0.22.0'
-  
+  pod 'Alamofire', '~> 3.5.0'
 
   target 'SignalTests' do
     inherit! :search_paths

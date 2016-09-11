@@ -51,6 +51,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedLanguage = sortedKeys[row] as! String
+        
+        SignalAppGlobals.sharedInstance.setUserLanguage(selectedCode)
     }
     
     @IBAction func loginButtonTapped(sender: AnyObject) {

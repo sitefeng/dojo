@@ -48,7 +48,7 @@ final internal class ScavengerCaptureViewController: UIViewController {
         
         // Image Capture Preview
         _imageCaptureSession = AVCaptureSession()
-        _imageCaptureSession.sessionPreset = AVCaptureSessionPresetPhoto
+        _imageCaptureSession.sessionPreset = AVCaptureSessionPreset640x480
         
         let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
         var backCameraOrNil: AVCaptureDevice?
@@ -76,8 +76,6 @@ final internal class ScavengerCaptureViewController: UIViewController {
         cameraView.layer.cornerRadius = 10
         cameraView.layer.masksToBounds = true
         
-        _imageCaptureSession.startRunning()
-        
         // Configure output
         _stillImageOutput = AVCaptureStillImageOutput()
         _stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
@@ -87,6 +85,9 @@ final internal class ScavengerCaptureViewController: UIViewController {
         }
         
         _imageCaptureSession.addOutput(_stillImageOutput)
+        
+        // Start Running session
+        _imageCaptureSession.startRunning()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -95,11 +96,44 @@ final internal class ScavengerCaptureViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(scavengerCompleted), name: SignalConstants.SignalScavengerCompletedNotification, object: nil)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        _captureLayer.frame = cameraView.bounds
+        
+    }
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    private func verifyWithServer(data: NSData) {
+        
+        let request = NetworkRequests()
+        
+        request.verify(data, itemName: huntWord) { (success, resultCorrect, associations) in
+            
+            guard success else {
+                print("Error: verify not successful")
+                return
+            }
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock({
+                let imageOrNil = UIImage(data: data)
+                
+                guard let image = imageOrNil else {
+                    print("no captured image")
+                    return
+                }
+                
+                let completionViewController = ScavengerCompletionViewController(capturedImage: image, associations: associations, itemName: self.huntWord)
+                self.presentViewController(completionViewController, animated: true, completion: nil)
+            })
+            
+        }
     }
     
     // MARK - NSNotification
@@ -132,20 +166,9 @@ final internal class ScavengerCaptureViewController: UIViewController {
                 return
             }
             
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                
-                let jpgData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-                let imageOrNil = UIImage(data: jpgData)
-                
-                guard let image = imageOrNil else {
-                    print("no captured image")
-                    return
-                }
-                
-                let completionViewController = ScavengerCompletionViewController(capturedImage: image, data: jpgData, itemName: self.huntWord)
-                self.presentViewController(completionViewController, animated: true, completion: nil)
-                
-            })
+            let jpgData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+            self.verifyWithServer(jpgData)
+
         }
     }
 

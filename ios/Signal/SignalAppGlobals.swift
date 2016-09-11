@@ -12,18 +12,15 @@ internal class SignalAppGlobals: NSObject {
     
     static let sharedInstance = SignalAppGlobals()
 
-    
-    let ClarifaiClientID = "vBJvCByYTgrKgdGRujAb-NBLzBBpX7C2W_UwAr00"
-    let ClarifaiClientSecret = "WNfQfXPkHPiW-pDIcPrH-e6H2dN3pef4Zs-hVLtH"
-    private let ClarifaiAccessTokenKey = "ClarifaiAccessTokenKey"
+    private let kUserLanguageKey = "kUserLanguageKey"
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
-    func ClarifaiSet(accessToken: String) {
-        userDefaults.setObject(accessToken, forKey: ClarifaiAccessTokenKey)
+    func setUserLanguage(languageCode: String) {
+        userDefaults.setObject(languageCode, forKey: kUserLanguageKey)
     }
     
-    func ClarifaiAccessToken() -> String? {
-        return userDefaults.objectForKey(ClarifaiAccessTokenKey) as? String
+    func userLanguage() -> String {
+        return userDefaults.objectForKey(kUserLanguageKey) as? String ?? "fr"
     }
     
 }

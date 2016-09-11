@@ -12,7 +12,7 @@ final internal class ScavengerCollectionViewCell: UICollectionViewCell {
     
     var cellTitle: String {
         set {
-            nameLabel.text = newValue
+            nameLabel.text = newValue.capitalizedString
         } get {
             return nameLabel.text ?? ""
         }

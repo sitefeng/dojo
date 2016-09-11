@@ -23,8 +23,9 @@ class ScavengerMainViewController: UIViewController {
     var selectedLanguageCode = "fr"
     
     // 2D Array
-    var wordsForLevelControllers = [["Crème Glacée", "Lanyard", "Vent", "Chair"], ["Vent", "Chair", "Flower", "Ship"], ["Trump", "Lanyard", "Flower", "Ship"]]
-    var wordsCompletedForLevelControllers = [[false, false, false, false], [false, false, false, false], [false, false, false, false]]
+    var wordsForLevelControllers = [["Leather", "Fork", "Technology"], ["Money", "Drink", "Fork"], ["Shoe", "Keyboard", "Flower", "Ship"]]
+    var translatedWordsForLevelControllers: [[String]] = [[],[],[]]
+    var wordsCompletedForLevelControllers = [[false, false, false], [false, false, false], [false, false, false, false]]
     
     convenience init(languageCode: String) {
         self.init(nibName: "ScavengerMainViewController", bundle: nil)
@@ -43,9 +44,9 @@ class ScavengerMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedLanguageCode = SignalAppGlobals.sharedInstance.userLanguage()
         
-        let screenWidth = UIScreen.mainScreen().bounds.width
-        let levelHeight = UIScreen.mainScreen().bounds.height - 128
+        primaryLabel.text = "Scavenger Hunt (\(selectedLanguageCode.capitalizedString))"
         
         transluscentView.backgroundColor = UIColor.transluscentWhite()
         transluscentView.clipsToBounds = true
@@ -57,8 +58,46 @@ class ScavengerMainViewController: UIViewController {
         controllerScrollView.pagingEnabled = true
         controllerScrollView.alwaysBounceVertical = false
         
+        let request = NetworkRequests()
         var index = 0
-        for wordsForLevel in wordsForLevelControllers {
+        for wordArray in wordsForLevelControllers {
+            
+            request.translate(wordArray, index: index, completionBlock: { (success, i, translatedWords) in
+                guard success else {
+                    print("error")
+                    return
+                }
+                self.translatedWordsForLevelControllers[i] = translatedWords
+                
+                // Load Content
+                self.reloadSubViewControllers()
+            })
+            
+            index += 1
+        }
+        
+        // Load Content
+        reloadSubViewControllers()
+    }
+    
+    
+    func reloadSubViewControllers() {
+        
+        // Removing all from before
+        for levelController in levelViewControllers {
+            levelController.willMoveToParentViewController(nil)
+            levelController.view.removeFromSuperview()
+            levelController.removeFromParentViewController()
+        }
+        levelViewControllers = []
+        
+        
+        // Readding
+        let screenWidth = UIScreen.mainScreen().bounds.width
+        let levelHeight = UIScreen.mainScreen().bounds.height - 128
+
+        var index = 0
+        for wordsForLevel in translatedWordsForLevelControllers {
             
             let levelHuntViewController = ScavengerHuntViewController(wordsForLevel: wordsForLevel, levelValue: index + 1)
             levelHuntViewController.view.frame = CGRect(x: screenWidth * CGFloat(index), y: 0, width: screenWidth, height: levelHeight)
@@ -73,7 +112,11 @@ class ScavengerMainViewController: UIViewController {
         
         controllerScrollView.contentSize = CGSize(width: CGFloat(index) * screenWidth, height: levelHeight)
     }
+    
 
+    @IBAction func returnButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
 
 }

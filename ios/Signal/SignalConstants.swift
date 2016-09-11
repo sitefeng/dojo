@@ -13,5 +13,5 @@ import UIKit
 final internal class SignalConstants: NSObject {
     
     static let SignalScavengerCompletedNotification = "SignalScavengerCompletedNotification"
-
+    static let AppDefaultLanguageCode = "en"
 }

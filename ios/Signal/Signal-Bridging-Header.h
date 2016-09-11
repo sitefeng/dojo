@@ -8,6 +8,6 @@
 
 #import "UIColor+Helper.h"
 
-
+#import "AsyncImageView.h"
 
 

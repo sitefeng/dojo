@@ -20,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uw" translatesAutoresizingMaskIntoConstraints="NO" id="zhi-tM-11v">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uw" translatesAutoresizingMaskIntoConstraints="NO" id="zhi-tM-11v" customClass="AsyncImageView">
                         <rect key="frame" x="8" y="8" width="56" height="53.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="56" id="6Qo-GU-fHI"/>
@@ -58,7 +58,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="customImageView" destination="zhi-tM-11v" id="hyq-6C-bxV"/>
+                <outlet property="asyncView" destination="zhi-tM-11v" id="fFj-Eg-nUN"/>
+                <outlet property="imageView" destination="zhi-tM-11v" id="Jym-k2-TqR"/>
                 <outlet property="mainLabel" destination="c9T-jj-OwM" id="iw5-Ok-Md3"/>
                 <outlet property="secondaryLabel" destination="GoB-9E-yBa" id="MsT-vq-Mbu"/>
             </connections>

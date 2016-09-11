@@ -16,10 +16,10 @@
 		AA94639B1D84FF2F00A6113E /* ScavengerCompletionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9463991D84FF2F00A6113E /* ScavengerCompletionTableViewCell.xib */; };
 		AA94639D1D851B4000A6113E /* SignalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA94639C1D851B4000A6113E /* SignalConstants.swift */; };
 		AA94639F1D85208A00A6113E /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA94639E1D85208A00A6113E /* NetworkRequests.swift */; };
+		AA9463A21D853E6600A6113E /* AssociationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9463A11D853E6600A6113E /* AssociationItem.swift */; };
+		AA9463A61D854FD800A6113E /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9463A51D854FD800A6113E /* AsyncImageView.m */; };
 		AAB4C8DF1D8438B200A2CC70 /* SignalAppGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4C8DE1D8438B200A2CC70 /* SignalAppGlobals.swift */; };
 		AAB4C8E11D843FFE00A2CC70 /* ImageAnalysisAccessRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4C8E01D843FFE00A2CC70 /* ImageAnalysisAccessRequest.swift */; };
-		AAB4C8E51D844EB400A2CC70 /* LanguageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4C8E31D844EB400A2CC70 /* LanguageSelectViewController.swift */; };
-		AAB4C8E61D844EB400A2CC70 /* LanguageSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB4C8E41D844EB400A2CC70 /* LanguageSelectViewController.xib */; };
 		AAB4C8E91D844F4800A2CC70 /* ScavengerHuntViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4C8E71D844F4800A2CC70 /* ScavengerHuntViewController.swift */; };
 		AAB4C8EA1D844F4800A2CC70 /* ScavengerHuntViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB4C8E81D844F4800A2CC70 /* ScavengerHuntViewController.xib */; };
 		AAB4C8ED1D84502800A2CC70 /* ScavengerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4C8EB1D84502800A2CC70 /* ScavengerCollectionViewCell.swift */; };
@@ -79,10 +79,11 @@
 		AA9463991D84FF2F00A6113E /* ScavengerCompletionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScavengerCompletionTableViewCell.xib; sourceTree = "<group>"; };
 		AA94639C1D851B4000A6113E /* SignalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalConstants.swift; sourceTree = "<group>"; };
 		AA94639E1D85208A00A6113E /* NetworkRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
+		AA9463A11D853E6600A6113E /* AssociationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociationItem.swift; sourceTree = "<group>"; };
+		AA9463A41D854FD800A6113E /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		AA9463A51D854FD800A6113E /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		AAB4C8DE1D8438B200A2CC70 /* SignalAppGlobals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalAppGlobals.swift; sourceTree = "<group>"; };
 		AAB4C8E01D843FFE00A2CC70 /* ImageAnalysisAccessRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAnalysisAccessRequest.swift; sourceTree = "<group>"; };
-		AAB4C8E31D844EB400A2CC70 /* LanguageSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageSelectViewController.swift; sourceTree = "<group>"; };
-		AAB4C8E41D844EB400A2CC70 /* LanguageSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanguageSelectViewController.xib; sourceTree = "<group>"; };
 		AAB4C8E71D844F4800A2CC70 /* ScavengerHuntViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScavengerHuntViewController.swift; sourceTree = "<group>"; };
 		AAB4C8E81D844F4800A2CC70 /* ScavengerHuntViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScavengerHuntViewController.xib; sourceTree = "<group>"; };
 		AAB4C8EB1D84502800A2CC70 /* ScavengerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScavengerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -208,6 +209,14 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
+		AA9463A31D853E6F00A6113E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA9463A11D853E6600A6113E /* AssociationItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		AAB4C8E21D844D1800A2CC70 /* Useless */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +240,8 @@
 		AAB4C9001D84848900A2CC70 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA9463A41D854FD800A6113E /* AsyncImageView.h */,
+				AA9463A51D854FD800A6113E /* AsyncImageView.m */,
 				AAB4C8F91D8481FF00A2CC70 /* ActionGlowButton.swift */,
 				AAB4C8FB1D8482C600A2CC70 /* ActionGlowButton.xib */,
 			);
@@ -243,8 +254,6 @@
 				AAC9FC6D1D832B640043E020 /* ViewController.swift */,
 				AAC9FC6F1D832B640043E020 /* Main.storyboard */,
 				AAB4C8E01D843FFE00A2CC70 /* ImageAnalysisAccessRequest.swift */,
-				AAB4C8E31D844EB400A2CC70 /* LanguageSelectViewController.swift */,
-				AAB4C8E41D844EB400A2CC70 /* LanguageSelectViewController.xib */,
 				AA9463971D84FF0400A6113E /* Scavenger */,
 			);
 			name = "View Controllers";
@@ -289,6 +298,7 @@
 			children = (
 				AAC9FC6B1D832B640043E020 /* AppDelegate.swift */,
 				AAB4C9021D8484B100A2CC70 /* Global */,
+				AA9463A31D853E6F00A6113E /* Model */,
 				AA9463A01D85208E00A6113E /* Networking */,
 				AAB4C9011D8484A600A2CC70 /* View Controllers */,
 				AAB4C9001D84848900A2CC70 /* Shared Views */,
@@ -443,7 +453,6 @@
 				AAB4C8F21D8451D100A2CC70 /* ScavengerCaptureViewController.xib in Resources */,
 				AAB4C8F81D847A1900A2CC70 /* ScavengerMainViewController.xib in Resources */,
 				AAB4C9051D8492B700A2CC70 /* Lato-Bold.ttf in Resources */,
-				AAB4C8E61D844EB400A2CC70 /* LanguageSelectViewController.xib in Resources */,
 				AAC9FC761D832B640043E020 /* Assets.xcassets in Resources */,
 				AAB4C9071D8492BE00A2CC70 /* Lato-Black.ttf in Resources */,
 				AAC9FC711D832B640043E020 /* Main.storyboard in Resources */,
@@ -607,7 +616,8 @@
 				AAB4C8E11D843FFE00A2CC70 /* ImageAnalysisAccessRequest.swift in Sources */,
 				AAB4C9091D84A43600A2CC70 /* UIColor+Extensions.swift in Sources */,
 				AAB4C8FA1D8481FF00A2CC70 /* ActionGlowButton.swift in Sources */,
-				AAB4C8E51D844EB400A2CC70 /* LanguageSelectViewController.swift in Sources */,
+				AA9463A61D854FD800A6113E /* AsyncImageView.m in Sources */,
+				AA9463A21D853E6600A6113E /* AssociationItem.swift in Sources */,
 				AA94639A1D84FF2F00A6113E /* ScavengerCompletionTableViewCell.swift in Sources */,
 				AA94639F1D85208A00A6113E /* NetworkRequests.swift in Sources */,
 				AAC9FC741D832B640043E020 /* Signal.xcdatamodeld in Sources */,

@@ -12,21 +12,29 @@ final internal class ScavengerCompletionTableViewCell: UITableViewCell {
 
     static let CellHeight = CGFloat(69.5)
     
-    @IBOutlet weak var customImageView: UIImageView!
+    private var _mainText: String = ""
+    private var _secondaryText: String = ""
+    private var _imageURL: NSURL = NSURL()
+    
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var secondaryLabel: UILabel!
-    
+    @IBOutlet weak var asyncView: AsyncImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        customImageView.layer.cornerRadius = customImageView.frame.size.height / 2.0
-        customImageView.layer.masksToBounds = true
+        asyncView.layer.cornerRadius = asyncView.frame.size.height / 2.0
+        asyncView.layer.masksToBounds = true
+        asyncView.imageURL = _imageURL
         
+        mainLabel.text = _mainText
+        secondaryLabel.text = _secondaryText
     }
 
-    func setupCell(mainText: String, secondaryText: String) {
-        mainLabel.text = mainText
-        secondaryLabel.text = secondaryText
+    func setupCell(mainText: String, secondaryText: String, imageURL: NSURL) {
+        _mainText = mainText
+        _secondaryText = secondaryText
+        _imageURL = imageURL
     }
     
 }

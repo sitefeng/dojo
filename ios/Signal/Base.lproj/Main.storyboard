@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pL-xe-PHd">
-                                <rect key="frame" x="0.0" y="239" width="600" height="254"/>
+                                <rect key="frame" x="0.0" y="239" width="600" height="248"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT LANGUAGE YOU WANT TO LEARN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ah-GA-4pC">
                                 <rect key="frame" x="20" y="210" width="560" height="21"/>
@@ -42,10 +42,10 @@
                                     <constraint firstAttribute="width" constant="168" id="dXF-Tv-fTS"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJE-Og-2sB" customClass="ActionGlowButton" customModule="Signal" customModuleProvider="target">
-                                <rect key="frame" x="20" y="515" width="560" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJE-Og-2sB" customClass="ActionGlowButton" customModule="Signal" customModuleProvider="target">
+                                <rect key="frame" x="20" y="512" width="560" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="YeA-y9-sFx"/>
+                                    <constraint firstAttribute="height" constant="44" id="YeA-y9-sFx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Start" backgroundImage="mainButtonColor">
